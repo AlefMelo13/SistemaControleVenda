@@ -1,10 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.ComponentModel.Design;
 
@@ -61,9 +60,11 @@ class SistemaLoja
         float precoProduto = float.Parse(Console.ReadLine());
 
         produtos.Add(new Produto(codigoProduto, nomeProduto, quantidadeEstoque, precoProduto));
+
+        Console.Clear();
         Console.WriteLine($"Produto {nomeProduto} cadastrado com sucesso.");
 
-        Thread.Sleep(2000);
+        Thread.Sleep(3000);
         Program.Menu();
     }
 
@@ -87,46 +88,54 @@ class SistemaLoja
         Produto produto = produtos.Find(p => p.Codigo == codigoProdutoVenda);
         if (produto == null)
         {
-            Console.WriteLine("Produto não encontrado.");
-            Thread.Sleep(2000);
+            Console.Clear();
+            Console.WriteLine("Produto não encontrado!");
+            Thread.Sleep(3000);
             Program.Menu();
             return;
         }
 
         if (produto.Quantidade < quantidadeVendida)
         {
-            Console.WriteLine("Estoque insuficiente.");
-            Thread.Sleep(2000);
+            Console.Clear();
+            Console.WriteLine("Estoque insuficiente!");
+            Thread.Sleep(3000);
             Program.Menu();
             return;
         }
 
         produto.Quantidade -= quantidadeVendida;
         vendas.Add(new Venda(produto, quantidadeVendida));
-        Console.WriteLine("Venda registrada com sucesso.");
 
-        Thread.Sleep(2000);
+        Console.Clear();
+        Console.WriteLine("Venda registrada com sucesso!");
+
+        Thread.Sleep(3000);
         Program.Menu();
     }
 
+    //No método de geração de relatório de vendas o sistema pede para o usuário digitar o caminho onde deseja salvar o arquivo
+    //
     public static void GerarRelatorioVendas()
     {
         Console.Clear();
 
-        Console.Write("Digite o diretório onde será salvo o arquivo de venda (Ex: D:\\Exemplo\\Arquivo.csv): ");
+        Console.Write("Digite o diretório onde será salvo o arquivo de venda (Ex: D:\\Caminho\\Venda.csv): ");
         string caminhoArquivo = Console.ReadLine();
 
         using (StreamWriter sw = new StreamWriter(caminhoArquivo))
         {
-            sw.WriteLine("Código,Nome,Quantidade Vendida,Valor Total");
+            sw.WriteLine("Código | Nome | Quantidade Vendida | Valor Total");
             foreach (Venda venda in vendas)
             {
-                sw.WriteLine($"{venda.Produto.Codigo},{venda.Produto.Nome},{venda.QuantidadeVendida},{venda.ValorTotal}");
+                sw.WriteLine($"{venda.Produto.Codigo}  |  {venda.Produto.Nome}  |  {venda.QuantidadeVendida}  |  R${venda.ValorTotal}");
             }
         }
+
+        Console.Clear();
         Console.WriteLine($"Relatório de vendas gerado em: {caminhoArquivo}");
 
-        Thread.Sleep(2000);
+        Thread.Sleep(3000);
         Program.Menu();
     }
 
@@ -134,20 +143,22 @@ class SistemaLoja
     {
         Console.Clear();
 
-        Console.Write("Digite o diretório onde será salvo o arquivo de estoque (Ex: D:\\Exemplo\\Arquivo.txt): ");
+        Console.Write("Digite o diretório onde será salvo o arquivo de estoque (Ex: D:\\Caminho\\Estoque.txt): ");
         string caminhoArquivoEstoque = Console.ReadLine();
 
         using (StreamWriter sw = new StreamWriter(caminhoArquivoEstoque))
         {
-            sw.WriteLine("Código,Nome,Quantidade em Estoque");
+            sw.WriteLine("Código | Nome | Quantidade em Estoque");
             foreach (Produto produto in produtos)
             {
-                sw.WriteLine($"{produto.Codigo},{produto.Nome},{produto.Quantidade}");
+                sw.WriteLine($"{ produto.Codigo }  |  { produto.Nome }  |  { produto.Quantidade }");
             }
         }
+
+        Console.Clear();
         Console.WriteLine($"Relatório de estoque gerado em: {caminhoArquivoEstoque}");
 
-        Thread.Sleep(2000);
+        Thread.Sleep(3000);
         Program.Menu();
     }
 }

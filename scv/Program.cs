@@ -21,13 +21,13 @@ class Program
         //As opções vão ser exibidas na tela do console para o usuário interagir
         Console.Clear();
         Console.WriteLine("Sistema de Controle de Vendas");
-        Console.WriteLine("--------------------");
+        Console.WriteLine("-----------------------------");
         Console.WriteLine("1 - Cadastrar Produto");
         Console.WriteLine("2 - Registrar Venda");
         Console.WriteLine("3 - Relatorio de Vendas");
         Console.WriteLine("4 - Relatorio de Estoque");
         Console.WriteLine("0 - Sair");
-        Console.WriteLine("--------------------");
+        Console.WriteLine("-----------------------------");
         Console.Write("Resposta: ");
 
         int resposta = int.Parse(Console.ReadLine());
