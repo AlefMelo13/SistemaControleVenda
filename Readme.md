@@ -1,4 +1,4 @@
-#Trabalho Prático - Sistema de Controle de Vendas
+# Trabalho Prático - Sistema de Controle de Vendas
 - Objetivo:
 Desenvolver um programa em Python que simule um sistema simples de controle de vendas para uma loja. O sistema deverá ser capaz de cadastrar produtos, registrar vendas e gerar relatórios de vendas com base nos dados manipulados.
 
