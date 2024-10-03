@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,14 +67,14 @@ class SistemaLoja
         Program.Menu();
     }
 
-    //No método de registro de venda eu solicito os dados da venda ao usuário,
-    //faço uma busca para verificar se o produto está cadsatrado
-    //se o resultado da busca for nulo, ou seja, o produto não existir no cadastro
-    //eu du uma mensagem "Produto não encontrado".
-    //Também verifico a quantidade da venda, se a quantidade for menor que o estoque
-    //dou uma mensagem "Estoque insuficiente".
-    //Se os dados digitados não entrarem nos if's ao diminuo a quantidade da venda encima do estoque
-    //depois adicino a venda.
+    //No método de registro de venda o sistema solicita os dados da venda ao usuário,
+    //faz uma busca para verificar se o produto está cadastrado,
+    //se o resultado da busca for nulo, ou seja, o produto não existir no cadastro,
+    //o sistema dá uma mensagem "Produto não localizado!".
+    //Também verifica a quantidade da venda, se a quantidade for menor que o estoque
+    //o sistema dá uma mensagem "Estoque insuficiente".
+    //Se os dados digitados não entrarem nos if's o sistema diminui a quantidade da venda encima do estoque
+    //depois adicina a venda.
     public static void RegistrarVenda()
     {
         Console.Clear();
@@ -89,7 +88,7 @@ class SistemaLoja
         if (produto == null)
         {
             Console.Clear();
-            Console.WriteLine("Produto não encontrado!");
+            Console.WriteLine("Produto não localizado!");
             Thread.Sleep(3000);
             Program.Menu();
             return;
@@ -115,7 +114,7 @@ class SistemaLoja
     }
 
     //No método de geração de relatório de vendas o sistema pede para o usuário digitar o caminho onde deseja salvar o arquivo
-    //
+    //e utiliza a classe StreamWriter para moontar e gravar o arquivo no local escolhido pelo usuário
     public static void GerarRelatorioVendas()
     {
         Console.Clear();
@@ -139,6 +138,8 @@ class SistemaLoja
         Program.Menu();
     }
 
+    //No método de geração de relatório de estoque o sistema pede para o usuário digitar o caminho onde deseja salvar o arquivo
+    //e utiliza a classe StreamWriter para moontar e gravar o arquivo no local escolhido pelo usuário
     public static void GerarRelatorioEstoque()
     {
         Console.Clear();
@@ -155,9 +156,12 @@ class SistemaLoja
             }
         }
 
+        //Eu utilizo o método Clear para limpar a tela após a tarefa
+        //executada pelo usuário e mostrar somente a mensagem de aviso que desejo
         Console.Clear();
         Console.WriteLine($"Relatório de estoque gerado em: {caminhoArquivoEstoque}");
 
+        //O método Sleep é para dar um tempo na tela par ao usuário ler a mensagem exibida
         Thread.Sleep(3000);
         Program.Menu();
     }

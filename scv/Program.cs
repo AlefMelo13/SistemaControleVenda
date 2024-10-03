@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.IO;
+
+//ESTE PROGRAMA CONTÉM MUTOS COMENTÁRIO PORQUE A ATIVIDADE ERA PRA TER SIDO FEITA EM PYTON
+//ENTRETANTO O PROFESSOR SANDRO PERMITIU FAZER USANDO C# E ORIENTOU QUE TIVESSE UMA BOA DOCUMENTAÇÃO
+//POR ISSO OS MUITOS COMENTÁRIOS NO CÓDIGO
+
 class Program
 {
     static void Main(string[] args)
 
     {
-        //Aqui eu chamo o método Menu para ajudar o usuário na escolha do que fazer dentro do sistema
+        //Aqui o sistema chama o método Menu para ajudar o usuário na escolha do que fazer dentro do sistema
         Menu();
     }
 
@@ -33,7 +38,7 @@ class Program
         int resposta = int.Parse(Console.ReadLine());
 
         //Aqui eu uso a estrutura condicional Switch Case para trabalhar a opção escolhida
-        //para o usuário e direcionar para a classe e método que corresmpondem a sua escolha
+        //pelo usuário e direcionar para a classe e método que corresmpondem a sua escolha
         switch (resposta)
         {
             case 1: SistemaLoja.CadastrarProduto(); break;
