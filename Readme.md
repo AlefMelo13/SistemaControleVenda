@@ -1,4 +1,4 @@
-<img src="/scv/logo2.png">
+<img src="/scv/logo2.png" height="700" width="150" align="middle">
 
 # Trabalho Prático - Sistema de Controle de Vendas
 - Objetivo:
